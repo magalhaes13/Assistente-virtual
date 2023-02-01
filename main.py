@@ -1,3 +1,6 @@
+import os
+from os import startfile
+
 import speech_recognition as sr
 import pyttsx3
 import datetime
@@ -31,7 +34,7 @@ def comando_voz_usuario():
         hora = datetime.datetime.now().strftime('%H:%M')
         maquina.say('Agora são' + hora)
         maquina.runAndWait()
-    elif 'procure por' in comando:
+    elif 'procure' in comando:
         procurar = comando.replace('procure por', '')
         wikipedia.set_lang('pt')
         resultado = wikipedia.summary(procurar,2)
@@ -44,6 +47,26 @@ def comando_voz_usuario():
         resultado = pywhatkit.playonyt(musica)
         maquina.say('Tocando música')
         maquina.runAndWait()
+
+    elif 'chrome' in comando:
+        abrir = comando.replace('chrome', '')
+        resultado = startfile('chrome.exe')
+        maquina.say('Abrindo chrome')
+        maquina.runAndWait()
+
+    elif 'github' in comando:
+        abrir = comando.replace('github','')
+        resultado = startfile('https://github.com/magalhaes13')
+        maquina.say('Abrindo GitHub')
+        maquina.runAndWait()
+
+    elif 'banco de dados' in comando:
+        abrir = comando.replace('bando de dados','')
+        resultado = startfile('C:\Program Files\MySQL\MySQL Workbench 8.0\MySQLWorkbench.exe')
+        maquina.say('Abrindo bd')
+        maquina.runAndWait()
+
+
 
 
 comando_voz_usuario()
